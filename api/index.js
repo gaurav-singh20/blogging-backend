@@ -11,10 +11,17 @@ const corsOptions = require('../config/corsOptions');
 
 connectDB();
 //user routes => /api/users and /api/user
-app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
 app.use(express.json()); //middleware to parse json
 
 // user routes for /api/users and /api/user
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
 app.use("/api", require("../routes/userRoutes"));
 
 

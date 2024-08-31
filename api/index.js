@@ -11,7 +11,6 @@ const corsOptions = require('../config/corsOptions');
 
 connectDB();
 //user routes => /api/users and /api/user
-app.use(cors(corsOptions));
 app.use(express.json()); //middleware to parse json
 
 // user routes for /api/users and /api/user

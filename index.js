@@ -3,10 +3,10 @@ const express = require("express");
 
 const app = express();
 const PORT = process.env.PORT || 4000;
-const connectDB = require("../config/dbConnect");
+const connectDB = require("./config/dbConnect");
 const mongoose = require("mongoose");
 var cors = require('cors')
-const corsOptions = require('../config/corsOptions');
+const corsOptions = require('./config/corsOptions');
 
 
 connectDB();
@@ -22,20 +22,20 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.use("/api", require("../routes/userRoutes"));
+app.use("/api", require("./routes/userRoutes"));
 
 
 // article routes 
 
-app.use("/api/articles", require("../routes/articleRoutes"));
+app.use("/api/articles", require("./routes/articleRoutes"));
 
 //tag routes
 
-app.use("/api/tags", require("../routes/tagRoutes"));
+app.use("/api/tags", require("./routes/tagRoutes"));
 
 //comment routes
 
-app.use("/api/articles", require("../routes/commentRoutes"));
+app.use("/api/articles", require("./routes/commentRoutes"));
 
 
 mongoose.connection.once("open", () => {

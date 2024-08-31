@@ -1,18 +1,9 @@
-const allowedOrigins = require('./allowedOrigins');
-
+// corsOptions.js
 
 const corsOptions = {
-    origin: (origin, callback) => {
-
-        if(allowedOrigins.indexOf(origin) !== -1 || !origin ){
-            callback(null, true);
-        }else{
-            callback(new Error('Not allowed by CORS'));
-        }
-
-    },
-    credentials:true, //cookies, http authentication with cross origin requests
-    optionsSuccessStatus:200 //(CORS preflight checks)
+    origin: true, // Allow all origins
+    credentials: true, // Allow cookies and other credentials in cross-origin requests
+    optionsSuccessStatus: 200, // Ensure success status for preflight requests
 };
 
 module.exports = corsOptions;
